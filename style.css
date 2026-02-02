@@ -13,7 +13,7 @@
 
 body {
     margin: 0; padding: 0;
-    /* 4 кольори, що плавно змінюються */
+    /* 4 кольори */
     background: linear-gradient(-45deg, #fff1eb, #ace0f9, #ff9a9e, #fecfef);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite; /* Анімація */
@@ -56,7 +56,7 @@ header {
     background: rgba(255,255,255,0.3); 
 }
 
-/* --- СТИЛЬ ФОТО МАМИ */
+/* --- СТИЛЬ ФОТО  */
 .hero-img-container {
     width: 220px;
     height: 220px;
@@ -172,10 +172,26 @@ header p {
     transform: scale(1.05); 
     box-shadow: 0 20px 40px rgba(255, 154, 158, 0.7);
 }
-#love-reason-display {
-    margin-top: 25px; font-size: 2rem; min-height: 2.4rem;
-    color: var(--deep-pink); text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-    padding: 0 20px; opacity: 0;
+
+   #love-reason-display {
+    /* --- ФІКСАЦІЯ РОЗМІРУ --- */
+    height: 120px; 
+    
+    /* Центрування тексту всередині цього блоку */
+    display: flex;
+    align-items: center;   /* По вертикалі */
+    justify-content: center; /* По горизонталі */
+    overflow: hidden; 
+
+    /*  СТАРІ СТИЛІ --- */
+    margin-top: 25px; 
+    margin-bottom: 20px; 
+    
+    font-size: 2rem; 
+    color: var(--deep-pink); 
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    padding: 0 20px; 
+    opacity: 0;
 }
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
@@ -219,11 +235,60 @@ header p {
 /* --- МОДАЛЬНІ ВІКНА --- */
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(194, 24, 91, 0.4); backdrop-filter: blur(5px); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
 .modal-content { 
-    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); border: var(--glass-border);
-    padding: 30px; border-radius: 25px; width: 90%; max-width: 900px; text-align: center; position: relative;
-    transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    /* ФОН --- */
+    
+    background: linear-gradient(to bottom, #ffffff 0%, #fff0f5 100%);
+    
+    /* Скляний ефект  */
+    backdrop-filter: blur(15px); 
+    
+    
+    border: 2px solid rgba(255, 182, 193, 0.8);
+    
+    padding: 30px; 
+    border-radius: 25px; 
+    width: 90%; 
+    max-width: 900px; 
+    text-align: center; 
+    position: relative;
+    
+    /* Анімація появи */
+    transform: scale(0.7) translateY(50px); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    
+    box-shadow: 0 20px 60px rgba(255, 20, 147, 0.25);
+    
+    overflow: hidden; 
+    z-index: 1001; 
 }
+
+/* ФОН З СЕРДЕЧКАМИ ВСЕРЕДИНІ ВІКНА --- */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 200%; 
+    height: 200%;
+    
+    /* Малюнок сердечок (SVG код) */
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ff69b4' opacity='0.08' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+    
+    background-size: 60px 60px; /* Розмір сердечок */
+    z-index: -1; /* Ставимо ЗА текстом */
+    
+    /* Анімація руху по діагоналі */
+    animation: moveHearts 20s linear infinite;
+    pointer-events: none; 
+}
+
+/* Сама анімація руху */
+@keyframes moveHearts {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50px, -50px); }
+}
+
 .modal.show { display: flex; opacity: 1; }
 .modal.show .modal-content { transform: scale(1) translateY(0); }
 .close { position: absolute; top: 15px; right: 20px; color: var(--primary-pink); font-size: 32px; font-weight: bold; cursor: pointer; }
@@ -238,7 +303,7 @@ header p {
     display: grid;
     grid-template-columns:repeat(3, 1fr);
     gap: 10px; /* Відступ між фотографіями */
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .grid-img {
@@ -292,7 +357,7 @@ header p {
     }
 }
 
-/* --- Нові стилі для розділів --- */
+/*  стилі для розділів --- */
 .section-title {
     text-align: center;
     color: white;
@@ -302,13 +367,13 @@ header p {
     text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
 }
 
-/* --- ОНОВЛЕНА КАРТКА СУПЕРСИЛИ (GLASSMORPHISM 2.0) --- */
+/* ---КАРТКА СУПЕРСИЛИ --- */
 
 .special-bg {
-    /* Градієнтний скляний фон для об'єму */
+    
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* Для Safari */
+    -webkit-backdrop-filter: blur(12px); 
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-top-color: rgba(255, 255, 255, 0.9); /* Ефект світла зверху */
     
@@ -316,7 +381,7 @@ header p {
     border-radius: 50px;
     padding: 12px 45px;
     width: fit-content;
-    margin: 30px auto 30px; /* Трохи більше відступу знизу */
+    margin: 30px auto 30px; 
     
     box-shadow: 
         0 10px 30px rgba(194, 24, 91, 0.15),
@@ -327,14 +392,14 @@ header p {
 
 .supergrid {
     display: grid;
-    /* АВТОМАТИЧНА СІТКА: Вміщує стільки, скільки влізе (мінімум 130px) */
+    
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 15px;
     
     max-width: 900px;
-    width: 95%; /* Трохи ширше */
+    width: 95%; 
     margin: 0 auto 50px;
-    padding: 10px; /* Щоб тіні не обрізались */
+    padding: 10px; 
 }
 
 /* Картка-малюк */
@@ -345,7 +410,7 @@ header p {
     border-radius: 20px;
     
     padding: 15px 10px;
-    height: 120px; /* Трохи вище для повітря */
+    height: 120px; 
     
     display: flex;
     flex-direction: column;
@@ -354,11 +419,11 @@ header p {
     text-align: center;
     
     cursor: pointer;
-    /* Пружиниста анімація */
+    
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     
-    /* Щоб текст не виділявся при швидких кліках */
+    
     user-select: none; 
 }
 
@@ -380,7 +445,7 @@ header p {
 }
 
 .power-card:hover .power-icon {
-    transform: scale(1.15) rotate(5deg); /* Грайливий поворот */
+    transform: scale(1.15) rotate(5deg); 
 }
 
 /* Текст на картці */
@@ -392,25 +457,20 @@ header p {
     margin-top: 10px;
 }
 
-/* --- МОДАЛЬНЕ ВІКНО & RPG STATS --- */
-
-/* --- КОМПАКТНИЙ & ЯСКРАВИЙ СТИЛЬ --- */
 
 /* Контейнер статів */
 .rpg-stats {
     text-align: left;
-    /* Напівпрозорий білий, щоб додати глибини */
-    background: rgba(255, 255, 255, 0.85); 
+        background: rgba(255, 255, 255, 0.85); 
     backdrop-filter: blur(12px); /* Розмиття фону */
     
-    /* Менші відступи для компактності */
     padding: 15px 20px; 
     border-radius: 20px;
-    margin: 10px auto; /* Центруємо і зменшуємо відступ */
-    max-width: 90%; /* Щоб не розлазилось на весь екран */
+    margin: 10px auto; 
+    max-width: 90%; 
     
     border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 10px 30px rgba(194, 24, 91, 0.15); /* Рожева тінь */
+    box-shadow: 0 10px 30px rgba(194, 24, 91, 0.15); 
 }
 
 /* Рядок зі статистикою */
@@ -418,7 +478,7 @@ header p {
     margin-bottom: 10px; /* Стискаємо по вертикалі */
 }
 
-/* Назви (Фізична сила) */
+/* Назви */
 .stat-label { 
     font-size: 0.85rem; 
     font-weight: 800; 
@@ -431,9 +491,9 @@ header p {
     letter-spacing: 0.5px;
 }
 
-/* Цифри (100/100) - робимо яскравими */
+
 .stat-label span:last-child {
-    color: #d81b60; /* Яскраво-рожевий */
+    color: #d81b60; 
     font-weight: 900;
     font-size: 0.95rem;
     text-shadow: 0 2px 5px rgba(216, 27, 96, 0.2);
@@ -442,33 +502,32 @@ header p {
 /* Фон смужки */
 .progress-bg {
     width: 100%;
-    height: 8px; /* ТОНКА смужка (елегантніше) */
-    background: #ebd4de; /* Ніжно-рожевий фон смужки */
+    height: 8px;
+    background: #ebd4de; 
     border-radius: 10px;
-    overflow: visible; /* Дозволяє світінню виходити за межі */
+    overflow: visible; 
     position: relative;
 }
 
 /* Сама лінія прогресу */
 .progress-fill {
     height: 100%;
-    /* Яскравий неоновий градієнт */
-    background: linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%); 
+       background: linear-gradient(90deg, #ff5f6d 0%, #ffc371 100%); 
     width: 0%; 
     border-radius: 10px;
     transition: width 1s ease-out;
     
-    /* Ефект світіння (NEON) */
+    /* Ефект світіння */
     box-shadow: 0 0 10px rgba(255, 95, 109, 0.7);
     position: relative;
 }
 
-/* Вогник на кінці смужки (маленька крапка) */
+/* Вогник на кінці смужки */
 .progress-fill::after {
     content: '';
     position: absolute;
     right: 0;
-    top: -2px; /* Трохи вище смужки */
+    top: -2px; 
     width: 12px;
     height: 12px;
     background: #fff;
@@ -476,34 +535,65 @@ header p {
     box-shadow: 0 0 10px rgba(255, 95, 109, 0.8);
 }
 
-/* Текст опису (Твої руки...) */
-p {
-    font-size: 0.9rem; /* Трохи менший шрифт */
+/* Текст опису */
+.rpg-stats p {
+    font-size: 0.9rem;
     line-height: 1.4;
     color: #555;
     margin-top: 15px;
-    text-align: center; /* Центруємо текст, так акуратніше */
+    text-align: center; 
     padding: 0 10px;
 }
 
 /* Блок "Вбивчий прийом" */
 .special-move {
-    background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
-    padding: 12px 15px;
-    border-radius: 12px;
-    border-left: 4px solid #d81b60;
-    margin-top: 15px;
-    font-size: 0.85rem;
+    
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important; /* Рівняємо по центру висоти */
+    justify-content: flex-start;
+    
+    /* 2. Дизайн рамки */
+    background: linear-gradient(to right, #fff0f5, #ffffff);
+    border-radius: 12px; 
+    border-left: 6px solid #d81b60; 
+    
+    /* 3. Розміри */
+    padding: 12px 20px;
+    margin-top: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    
+    /* 4. Текст */
+    font-size: 1.05rem;
     color: #333;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    line-height: 1.2;
+    text-align: left;
 }
 
-/* Заголовок прийому жирним */
+/* Стиль заголовка */
 .special-move strong {
     color: #d81b60;
-    display: block; /* З нового рядка */
-    margin-bottom: 3px;
-    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap; /* ЗАБОРОНЯЄМО заголовку переноситись */
+    margin-right: 10px; 
+    display: flex;
+    align-items: center;
+}
+
+/* --- ГОЛОВНИЙ ФІКС --- */
+
+.special-move br {
+    display: none !important;
+}
+
+/* Примушуємо будь-який текст всередині стояти в рядок */
+.special-move p, 
+.special-move span, 
+.special-move div {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important; 
 }
 /* --- АДАПТАЦІЯ (Мобільний) --- */
 @media (max-width: 600px) {
@@ -519,7 +609,7 @@ p {
     }
 
     .power-name {
-        font-size: 1rem; /* Трохи менший шрифт */
+        font-size: 1rem; /*  шрифт */
     }
     
     .special-bg {
@@ -545,7 +635,7 @@ p {
     animation: popUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 }
 
-/* Затримка для кожної картки (щоб вилітали по черзі) */
+/* Затримка для кожної картки  */
 .power-card:nth-child(1) { animation-delay: 0.1s; }
 .power-card:nth-child(2) { animation-delay: 0.2s; }
 .power-card:nth-child(3) { animation-delay: 0.3s; }
@@ -554,3 +644,37 @@ p {
 .power-card:nth-child(6) { animation-delay: 0.6s; }
 .power-card:nth-child(7) { animation-delay: 0.7s; }
 .power-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* --- АДАПТАЦІЯ (МОБІЛЬНИЙ vs ПК) --- */
+
+/* За замовчуванням (ПК): ховаємо мобільний  */
+.mobile-only {
+    display: none !important;
+}
+
+/* Налаштування для ТЕЛЕФОНІВ (екран менше 600px) */
+@media (max-width: 600px) {
+    /* Ховаємо для ПК */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* Показуємо мобільний  */
+    .mobile-only {
+        display: block !important;
+    }
+
+    /* Спеціальна сітка для 2-х фото на телефоні */
+    .photo-grid.mobile-only {
+        display: grid !important; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+    }
+    
+    
+    p.mobile-only {
+        font-size: 0.95rem; 
+        line-height: 1.3;
+    }
+}
+
