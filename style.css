@@ -678,3 +678,40 @@ header p {
     }
 }
 
+/* --- ВИПРАВЛЕННЯ ДЛЯ МОБІЛЬНОЇ ВЕРСІЇ --- */
+
+
+@media (max-width: 600px) {
+    
+    
+    .section-title, h2 {
+        font-size: 2rem !important; /
+    }
+
+    /*  "Вбивчий прийом" */
+    .special-move {
+        display: flex !important;         
+        justify-content: space-between;  
+        align-items: center;              /
+        
+        padding: 8px 12px !important;     
+        font-size: 0.9rem !important;     
+        
+        
+        height: auto !important;
+    }
+
+    /* Налаштування для тексту "ВБИВЧИЙ ПРИЙОМ:"  */
+    .special-move strong {
+        margin-right: 5px;    
+        white-space: nowrap;  
+        font-size: 0.95rem;  
+    }
+
+    /* Налаштування для самої цитати */
+    .special-move span, .special-move p {
+        text-align: right;    
+        margin: 0 !important; 
+        flex-grow: 1;         
+    }
+}
