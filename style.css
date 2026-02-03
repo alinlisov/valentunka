@@ -680,41 +680,45 @@ header p {
 
 /* --- ОНОВЛЕНИЙ МОБІЛЬНИЙ ДИЗАЙН СУПЕРСИЛИ --- */
 @media (max-width: 600px) {
+
+    .section-title, h2 {
+        font-size: 2rem !important; 
+    }
     /* Сам блок */
     .special-move {
-        /* Розміщуємо елементи стовпчиком (один під одним) */
+        /* Розміщуємо елементи стовпчиком */
         flex-direction: column !important;
-        align-items: flex-start !important; /* Вирівнюємо все по лівому краю */
+        align-items: flex-start !important; 
         
-        padding: 12px 15px !important; /* Комфортні відступи */
+        padding: 12px 15px !important; 
         gap: 5px; /* Проміжок між заголовком і текстом */
         
-        /* Робимо блок візуально легшим */
+     
         background: rgba(255, 255, 255, 0.7) !important;
         border-radius: 15px !important;
         margin-top: 20px !important;
     }
 
-    /* Заголовок "⚔️ ВБИВЧИЙ ПРИЙОМ:" */
+    /* Заголовок */
     .special-move strong {
-        width: 100%; /* Займає всю ширину рядка */
-        margin-right: 0 !important; /* Прибираємо відступ справа */
-        margin-bottom: 5px; /* Додаємо відступ знизу до тексту */
+        width: 100%;
+        margin-right: 0 !important; 
+        margin-bottom: 5px; 
         
-        font-size: 1rem !important; /* Трохи виразніший шрифт */
-        color: var(--deep-text); /* Темніший колір для контрасту */
+        font-size: 1rem !important; 
+        color: var(--deep-text); 
         display: flex;
-        align-items: center; /* Іконка рівно по центру тексту */
+        align-items: center; 
     }
 
-    /* Текст опису (цитата) */
+    /* Текст опису*/
     .special-move span, 
     .special-move p {
-        text-align: left !important; /* Текст вирівняно вліво, а не вправо */
-        width: 100%; /* На всю ширину блоку */
+        text-align: left !important; 
+        width: 100%; 
         
-        font-size: 0.95rem !important; /* Зручний розмір для читання */
-        line-height: 1.4; /* Міжрядковий інтервал для легкості */
-        color: #555; /* Трохи м'якший колір тексту */
+        font-size: 0.95rem !important; 
+        line-height: 1.4; 
+        color: #555; 
     }
 }
