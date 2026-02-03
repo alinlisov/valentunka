@@ -678,40 +678,43 @@ header p {
     }
 }
 
-/* --- ВИПРАВЛЕННЯ ДЛЯ МОБІЛЬНОЇ ВЕРСІЇ --- */
-
-
+/* --- ОНОВЛЕНИЙ МОБІЛЬНИЙ ДИЗАЙН СУПЕРСИЛИ --- */
 @media (max-width: 600px) {
-    
-    
-    .section-title, h2 {
-        font-size: 2rem !important; /
-    }
-
-    /*  "Вбивчий прийом" */
+    /* Сам блок */
     .special-move {
-        display: flex !important;         
-        justify-content: space-between;  
-        align-items: center;              /
+        /* Розміщуємо елементи стовпчиком (один під одним) */
+        flex-direction: column !important;
+        align-items: flex-start !important; /* Вирівнюємо все по лівому краю */
         
-        padding: 8px 12px !important;     
-        font-size: 0.9rem !important;     
+        padding: 12px 15px !important; /* Комфортні відступи */
+        gap: 5px; /* Проміжок між заголовком і текстом */
         
-        
-        height: auto !important;
+        /* Робимо блок візуально легшим */
+        background: rgba(255, 255, 255, 0.7) !important;
+        border-radius: 15px !important;
+        margin-top: 20px !important;
     }
 
-    /* Налаштування для тексту "ВБИВЧИЙ ПРИЙОМ:"  */
+    /* Заголовок "⚔️ ВБИВЧИЙ ПРИЙОМ:" */
     .special-move strong {
-        margin-right: 5px;    
-        white-space: nowrap;  
-        font-size: 0.95rem;  
+        width: 100%; /* Займає всю ширину рядка */
+        margin-right: 0 !important; /* Прибираємо відступ справа */
+        margin-bottom: 5px; /* Додаємо відступ знизу до тексту */
+        
+        font-size: 1rem !important; /* Трохи виразніший шрифт */
+        color: var(--deep-text); /* Темніший колір для контрасту */
+        display: flex;
+        align-items: center; /* Іконка рівно по центру тексту */
     }
 
-    /* Налаштування для самої цитати */
-    .special-move span, .special-move p {
-        text-align: right;    
-        margin: 0 !important; 
-        flex-grow: 1;         
+    /* Текст опису (цитата) */
+    .special-move span, 
+    .special-move p {
+        text-align: left !important; /* Текст вирівняно вліво, а не вправо */
+        width: 100%; /* На всю ширину блоку */
+        
+        font-size: 0.95rem !important; /* Зручний розмір для читання */
+        line-height: 1.4; /* Міжрядковий інтервал для легкості */
+        color: #555; /* Трохи м'якший колір тексту */
     }
 }
